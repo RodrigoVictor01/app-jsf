@@ -4,16 +4,25 @@
 - Java 11+ (para build do projeto)
 - Maven
 - WildFly 37.0.0
+- PostgresSQL
 
 
 ## Como rodar o projeto
 
+### Primeiramente, clone o projeto:
+```bash
+git clone https://github.com/RodrigoVictor01/app-jsf.git
+cd app-jsf
+```
+
 ### 1. Banco de dados PostgreSQL
 
-Instale e configure o PostgreSQL localmente:
-- Usuário: `seu-user`, Senha: `sua-senha`
+Abra o psql:
+```sh
+psql -U seu-user
+```
   
-- Crie o banco `app_jsf_db`. com o comando:
+- Com o psql aberto, crie o banco `app_jsf_db`. com o comando:
 ```sh
 CREATE DATABASE app_jsf_db;
 ```
