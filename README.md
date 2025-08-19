@@ -1,7 +1,6 @@
 # Pessoa Salário Consolidado
 
 ## Requisitos
-- Docker e Docker Compose instalados
 - Java 11+ (para build do projeto)
 - Maven
 - WildFly 37.0.0
