@@ -1,0 +1,20 @@
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+    <persistence-unit name="esigPU" transaction-type="JTA">
+        <jta-data-source>java:/PostgresDS</jta-data-source>
+
+        <class>br.com.esig.model.Pessoa</class>
+        <class>br.com.esig.model.Cargo</class>
+        <class>br.com.esig.model.Vencimento</class>
+        <class>br.com.esig.model.CargoVencimentos</class>
+        <class>br.com.esig.model.PessoaSalarioConsolidado</class>
+        <properties>
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="none"/>
+        </properties>
+    </persistence-unit>
+</persistence>

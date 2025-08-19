@@ -1,0 +1,12 @@
+<datasources>
+    <datasource jndi-name="java:/PostgresDS" pool-name="PostgresDS" enabled="true" use-java-context="true">
+        <connection-url>sua-connection-url</connection-url>
+        <driver>postgresql</driver>
+        <security user-name="postgres" password="sua-senha"/>
+    </datasource>
+    <drivers>
+        <driver name="postgresql" module="org.postgresql">
+            <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
+        </driver>
+    </drivers>
+</datasources>

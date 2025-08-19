@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Listagem de Pessoas</title>
+
+    <style>
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1em;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            min-width: 600px;
+            box-shadow: 0 0 10px rgba(76, 101, 173, 0.15);
+        }
+
+        .styled-table thead tr {
+            background-color: #4C65Ad;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+            border: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #4C65Ad;
+        }
+
+        .styled-table tbody tr:hover {
+            background-color: #eaf0fa;
+        }
+
+        .button-style {
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+
+        .success-message {
+            background-color: #4CAF50;
+            font-weight: bold;
+            color: #FFF;
+            padding: 10px 15px;
+            display: block;
+        }
+    </style>
+
+</h:head>
+<h:body>
+    <h:form>
+
+        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+        <p:dialog widgetVar="statusDialog" modal="true" header="Processando..." draggable="false" closable="false"
+            resizable="false" showEffect="fade" hideEffect="fade" style="text-align:center">
+            <i class="pi pi-spin pi-spinner" style="font-size:2em;color:#4C65Ad"></i>
+            <br />Aguarde...
+        </p:dialog>
+
+        <p:commandButton styleClass="button-style" value="Calcular / Recalcular Salários"
+            actionListener="#{pessoaBean.calcularSalariosAssincrono}" ajax="true" update="@form"
+            rendered="#{not pessoaBean.salarioCalculado}">
+            <p:ajax event="click" update="@form" />
+        </p:commandButton>
+
+        <h:outputText value="Salários calculados com sucesso!" styleClass="success-message"
+            rendered="#{pessoaBean.salarioCalculado}" />
+
+        <p:dataTable value="#{pessoaBean.pessoasVencimentoCredito}" var="p" paginator="true" paginatorPosition="bottom"
+            rows="10" styleClass="styled-table" rendered="#{not pessoaBean.salarioCalculado}">
+            <p:column headerText="ID" sortBy="#{p.pessoa_id}" sortable="true">
+                #{p.pessoa_id}
+            </p:column>
+            <p:column headerText="Nome" sortBy="#{p.nome_pessoa}" sortable="true">
+                #{p.nome_pessoa}
+            </p:column>
+            <p:column headerText="Cargo" sortBy="#{p.nome_cargo}" sortable="true">
+                #{p.nome_cargo}
+            </p:column>
+            <p:column headerText="Salário Bruto" sortBy="#{p.salarioFormatado}" sortable="true">
+                #{p.salarioFormatado}
+            </p:column>
+        </p:dataTable>
+
+        <p:dataTable value="#{pessoaBean.pessoas}" var="p" paginator="true" rows="10" paginatorPosition="bottom"
+            styleClass="styled-table" rendered="#{pessoaBean.salarioCalculado}">
+            <p:column headerText="ID" sortBy="#{p.pessoa_id}" sortable="true">
+                #{p.pessoa_id}
+            </p:column>
+            <p:column headerText="Nome" sortBy="#{p.nome_pessoa}" sortable="true">
+                #{p.nome_pessoa}
+            </p:column>
+            <p:column headerText="Cargo" sortBy="#{p.nome_cargo}" sortable="true">
+                #{p.nome_cargo}
+            </p:column>
+            <p:column headerText="Salário Líquido" sortBy="#{p.salarioFormatado}" sortable="true">
+                #{p.salarioFormatado}
+            </p:column>
+
+        </p:dataTable>
+    </h:form>
+
+</h:body>
+
+</html>

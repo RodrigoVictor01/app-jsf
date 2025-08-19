@@ -1,0 +1,6 @@
+# configuração datasource postgresql pra wildfly
+/subsystem=datasources/jdbc-driver=postgresql:add(driver-name="postgresql",driver-module-name="org.postgresql",driver-class-name="org.postgresql.Driver")
+
+/subsystem=datasources/data-source=PostgreSQLDS:add(jndi-name="java:jboss/datasources/PostgreSQLDS",driver-name="postgresql",connection-url="jdbc:postgresql://localhost:5432/app_jsf_db",user-name="postgres",password="773699",valid-connection-checker-class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker",exception-sorter-class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter")
+
+/subsystem=datasources/data-source=PostgreSQLDS:enable

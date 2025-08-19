@@ -1,0 +1,8 @@
+br\com\esig\bean\PessoaBean.class
+br\com\esig\model\Cargo.class
+br\com\esig\model\Pessoa.class
+br\com\esig\model\PessoaSalarioConsolidado.class
+br\com\esig\repository\PessoaRepository.class
+br\com\esig\model\Vencimento.class
+br\com\esig\service\SalarioService.class
+br\com\esig\model\CargoVencimentos.class

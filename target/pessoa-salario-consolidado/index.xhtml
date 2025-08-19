@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Sistema Pessoa Salário Consolidado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu li {
+            margin: 10px 0;
+        }
+
+        .menu a {
+            display: block;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .menu a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</h:head>
+<h:body>
+    <div class="container">
+        <h1>Sistema Pessoa Salário Consolidado</h1>
+        <p>Bem-vindo ao sistema de gestão de pessoas e salários!</p>
+
+        <ul class="menu">
+            <li>
+                <h:link value="📋 Listagem de Pessoas" outcome="listagem" />
+            </li>
+        </ul>
+
+        <hr style="margin: 30px 0;" />
+
+        <div
+            style="background:#f9f9f9;border-radius:8px;padding:30px 30px;text-align:center;box-shadow:0 1px 4px rgba(76,101,173,0.10);">
+            <h2 style="color:#4C65Ad;margin-bottom:15px;">Bem-vindo!</h2>
+            <p style="font-size:1.15em;color:#333;margin-bottom:10px;">
+                Este sistema permite gerenciar pessoas, cargos e salários de forma simples e eficiente.
+                <br />
+            </p>
+            <p style="font-size:1em;color:#666;">
+                Dúvidas ou sugestões? <a
+                    href="https://wa.me/5584988964424?text=Ol%C3%A1%2C%20estou%20com%20d%C3%BAvidas%20sobre%20o%20projeto%20com%20Java%2C%20utilizando%20JSF.%20Poderia%20me%20auxiliar%3F"
+                    target="_blank">
+                    Entre em contato com o suporte.</a>
+                <br />
+                Tenha uma ótima experiência!
+            </p>
+        </div>
+    </div>
+</h:body>
+
+</html>
