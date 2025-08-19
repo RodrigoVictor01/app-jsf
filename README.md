@@ -11,7 +11,7 @@
 ### 1. Banco de dados PostgreSQL
 
 Instale e configure o PostgreSQL localmente:
-- Usuário: `postgres`, Senha: `sua-senha`
+- Usuário: `seu-user`, Senha: `sua-senha`
   
 - Crie o banco `app_jsf_db`. com o comando:
 ```sh
@@ -36,7 +36,7 @@ Instale o WildFly localmente (versão 37.0.0.Final) e configure o datasource no 
     <datasource jndi-name="java:/PostgresDS" pool-name="PostgresDS" enabled="true" use-java-context="true">
         <connection-url>sua-connection-url</connection-url>
         <driver>postgresql</driver>
-        <security user-name="postgres" password="sua-senha"/>
+        <security user-name="seu-user" password="sua-senha"/>
     </datasource>
     <drivers>
         <driver name="postgresql" module="org.postgresql">
