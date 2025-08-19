@@ -12,13 +12,26 @@
 ### 1. Banco de dados PostgreSQL
 
 Instale e configure o PostgreSQL localmente:
-- Crie o banco `app_jsf_db`.
 - Usuário: `postgres`, Senha: `sua-senha`
+  
+- Crie o banco `app_jsf_db`. com o comando:
+```sh
+CREATE DATABASE app_jsf_db;
+```
+
+- Após o banco criado, no diretório raiz do projeto, rode:
+```sh
+psql -h localhost -U postgres -d app_jsf_db -f .\create_tables.sql
+````
+- Após a criação das tabelas no banco, rode:
+``` sh
+psql -h localhost -U postgres -d app_jsf_db -f .\copyfromcsv.sql
+```
 
 
 ### 2. Configuração do WildFly
 
-Instale o WildFly localmente e configure o datasource no arquivo `standalone.xml`:
+Instale o WildFly localmente (versão 37.0.0.Final) e configure o datasource no arquivo `standalone.xml`:
 ```xml
 <datasources>
     <datasource jndi-name="java:/PostgresDS" pool-name="PostgresDS" enabled="true" use-java-context="true">
@@ -55,7 +68,8 @@ Faça o deploy manualmente pelo console do WildFly ou mova para o diretório de 
 No arquivo `src/main/resources/META-INF/persistence.xml`:
 - O datasource está configurado como `java:/PostgresDS`.
 - O schema do banco deve ser criado manualmente (`hibernate.hbm2ddl.auto = none`).
-- Scripts de schema estão em `docker/init-scripts/01_schema.sql`.
+- Script de schema: `create_tables.sql`.
+- Scprit que popula o banco com os dados da planilha: `copyfromcsv.sql`
 
 ---
 
@@ -74,4 +88,7 @@ No arquivo `src/main/resources/META-INF/persistence.xml`:
 
 ---
 
-Se precisar de configurações avançadas, ajuste os arquivos conforme sua necessidade!
+# Links úteis
+- [Download WildFly](https://www.wildfly.org/downloads/)
+- [Download do postgresql-42.7.7 para configuração WildFly](https://jdbc.postgresql.org/download/)
+
